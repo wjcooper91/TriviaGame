@@ -30,6 +30,21 @@ $(document).ready(function() {
         correctAnswer5: 0
     }];
 
+    var q1 = "C";
+    var q2 = "B";
+    var correctCounter = 0;
+
+    function correct(qNum, choice) {
+    
+        if (qNum == "q1" && choice == "C") {
+            correctCounter += 1;
+            console.log("correct");
+        }
+
+        if (qNum == "q2" && choice == "B") {
+            correctCounter += 1;
+        }
+    }
 
     $(".quiz").hide();
     $("#results").hide();
@@ -40,7 +55,7 @@ $(document).ready(function() {
         $(".quiz").show();
 
         (function() {
-            var counter = 31;
+            var counter = 19999;
 
             setInterval(function() {
                 counter--;
@@ -59,46 +74,25 @@ $(document).ready(function() {
 
                 else {
                     $(".done").click(function() {
+                        clearInterval(timer);
                         $("#timer").remove();
                         $(".quiz").remove();
                         $(".done").remove();
+                        for(var i = 0; i < 0; i++){
+                            $("li") 
+                        }
+
+                        //for loop
+                        //grab list of children id from quiz, grab selected radio button
+                        //loop through array, each time call correct();
                         $("#results").show();
+                    $(".correct").append("Correct: " + correctCounter);
                     });
                 }
 
             }, 1000);
 
         })();
-
-var answers = ["A","C","B"];
-var tot = answers.length;
-
-function getCheckedValue( radioName ){
-    var radios = document.getElementsByName( radioName ); // Get radio group by-name
-    for(var y=0; y<radios.length; y++)
-      if(radios[y].checked) return radios[y].value; // return the checked value
-}
-
-function getCorrect(){
-  var score = 0;
-  for (var i=0; i<tot; i++)
-    if(getCheckedValue("question"+i)===answers[i]) score += 1; // increment only
-  return score;
-}
-
-function getIncorrect(){
-    var score = 0;
-    for (var i=0; i<tot; i++)
-      if(getCheckedValue("question"+i)===answers[i]) score += 1; // increment only
-    return score;
-  }
-
-(function returnScore(){
-    $(".correct").html("Correct: " + getCorrect());
-    $(".incorrect").html("Incorrect: " + getIncorrect());
-})();
-    
-
     });
     
 
