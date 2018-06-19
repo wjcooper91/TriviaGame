@@ -38,7 +38,6 @@ $(document).ready(function() {
     
         if (qNum == "q1" && choice == "C") {
             correctCounter += 1;
-            console.log("correct");
         }
 
         if (qNum == "q2" && choice == "B") {
@@ -75,12 +74,23 @@ $(document).ready(function() {
                 else {
                     $(".done").click(function() {
                         clearInterval(timer);
+                        var checked = $(":checked")
                         $("#timer").remove();
                         $(".quiz").remove();
                         $(".done").remove();
-                        for(var i = 0; i < 0; i++){
-                            $("li") 
+                        console.log(checked);
+                        for (var i = 0; i < checked.length; i++) {
+                            if ($(checked[i]).data("correct")) {
+                                correctCounter++;
+                            }
                         }
+                        // for (var i = 0; i < 0; i++){
+
+                        //     $(data-correct == true )
+
+                        //     // if correct 
+                        //     correct();
+                        // }
 
                         //for loop
                         //grab list of children id from quiz, grab selected radio button
