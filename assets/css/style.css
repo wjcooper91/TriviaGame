@@ -16,7 +16,7 @@ body {
   width:20%;
 }
 
-.done {
+#done {
   text-align:center;
   padding:20px;
   background-color: slategray;
